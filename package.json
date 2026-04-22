@@ -1,0 +1,29 @@
+{
+  "name": "demoqa-jstests",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint:ci": "eslint .",
+    "lint": "eslint . --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.28.5",
+    "@eslint/js": "^9.39.4",
+    "@faker-js/faker": "^9.9.0",
+    "@playwright/test": "^1.59.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.6.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.4.0",
+    "jest-html-reporters": "^3.1.7",
+    "prettier": "^3.8.1",
+    "typescript-eslint": "^8.58.1"
+  }
+}

@@ -1,0 +1,10 @@
+text
+
+reports
+build
+coverage
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.config.ts
