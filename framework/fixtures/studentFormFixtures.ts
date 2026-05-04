@@ -10,6 +10,7 @@ type StudentFormFixtures = {
     subjects: string;
     currentAddress: string;
     invalidEmail: string;
+    invalidMobileNumber: string;
 };
 
 export const test = base.extend<StudentFormFixtures>({
@@ -37,5 +38,9 @@ export const test = base.extend<StudentFormFixtures>({
   invalidEmail: async ({}, use) => {
     const randomText = Math.random().toString(36).substring(2, 15);
     await use(randomText);
+  },
+  invalidMobileNumber: async ({}, use) => {
+    const invalidNumber = Math.random().toString(36).substring(2, 10);
+    await use(invalidNumber);
   },
 });

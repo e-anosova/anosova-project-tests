@@ -8,7 +8,6 @@ export class BasePage {
   }
 
   async checkUrl(partOfUrl: string) {
-    console.log(`Проверяем, что URL содержит текст ${partOfUrl}`);
     await expect(this.page).toHaveURL(new RegExp(`.*${partOfUrl}.*`));
   }
 }

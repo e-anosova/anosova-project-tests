@@ -32,10 +32,8 @@ export class ElementsPage extends BasePage {
   }
 
   async gotoTextBox() {
-    console.log("Идём в раздел Text Box");
     await this.textBox.waitFor({ state: "visible", timeout: 10000 });
     const isVisible = await this.textBox.isVisible();
-    console.log(`Элемент Text Box видим: ${isVisible}`);
     await this.textBox.click();
     await this.page.waitForURL(/.*text-box/, { timeout: 10000 });
     await expect(this.userForm).toBeVisible;
@@ -43,41 +41,34 @@ export class ElementsPage extends BasePage {
   }
 
   async fullNameFill(fullName: string) {
-    console.log("Заполняем Full Name");
     await expect(this.fullNameInput).toBeEditable;
     await this.fullNameInput.fill(fullName);
   }
 
   async emailFill(email: string) {
-    console.log("Заполняем email");
     await expect(this.emailInput).toBeEditable;
     await this.emailInput.fill(email);
   }
 
   async currentAddresslFill(currentAddress: string) {
-    console.log("Заполняем Current Address");
     await expect(this.currentAddressInput).toBeEditable;
     await this.currentAddressInput.fill(currentAddress);
   }
 
   async permanentAddressFill(permanentAddress: string) {
-    console.log("Заполняем Permanent Address");
     await expect(this.permanentAddressInput).toBeEditable;
     await this.permanentAddressInput.fill(permanentAddress);
   }
 
   async clickSubmit() {
-    console.log("Нажимаем Submit");
     await this.submitButton.click();
   }
 
   async checkOutputResult() {
-    console.log("Проверяем, что данные отображаются в output");
     await expect(this.outputForm).not.toBeEmpty();
   }
 
   async checkOutputAndInputNamesMatch(fullName: string) {
-    console.log("Проверяем, что output name соответсвует input name");
     await expect(this.nameOutput).toHaveText(
       new RegExp(`Name:\\s*${fullName}`),
     );
@@ -109,7 +100,6 @@ export class ElementsPage extends BasePage {
   }
 
   async checkEmptyOutputResults() {
-    console.log("Проверяем, что output форма пустая");
     await expect(this.outputForm).toBeEmpty();
   }
 

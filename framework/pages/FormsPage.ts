@@ -104,10 +104,8 @@ export class FormsPage extends BasePage {
   }
 
   async gotoPracticeForm() {
-    console.log("Идём в раздел Practice Form");
     await this.practiceForm.waitFor({ state: "visible", timeout: 10000 });
      const isVisible = await this.practiceForm.isVisible();
-    console.log(`Элемент Practice Form видим: ${isVisible}`);
     await this.practiceForm.click();
     await this.page.waitForURL(/.*automation-practice-form/, { timeout: 10000 });
     await expect(this.userForm).toBeVisible;
@@ -115,41 +113,34 @@ export class FormsPage extends BasePage {
   }
 
   async firstNameFill(firstName: string) {
-    console.log("Заполняем First Name");
     await expect(this.firstName).toBeEditable;
     await this.firstName.fill(firstName);
   }
 
   async lastNameFill(lastName: string) {
-    console.log("Заполняем Second Name");
     await expect(this.lastName).toBeEditable;
     await this.lastName.fill(lastName);
   }
 
   async emailFill(email: string) {
-    console.log("Заполняем email");
     await expect(this.emailFild).toBeEditable;
     await this.emailFild.fill(email);
   }
 
   async femaleGenderCheck() {
-    console.log("Выбираем женский гендер");
     await this.femaleRadio.check();
   }
 
     async maleGenderCheck() {
-    console.log("Выбираем мужской гендер");
     await this.maleRadio.check();
   }
 
   async fillPhoneNumber(phoneNumber: string) {
-    console.log("Заполняем номер телефона");
     await expect(this.mobileNumberFild).toBeEditable;
     await this.mobileNumberFild.fill(phoneNumber);
   }
 
   async selectDateSimple(day: number, month: string, year: number) {
-    console.log(`Выбираем дату: ${day} ${month} ${year}`);
     await this.dateInput.click();
     await this.monthSelect.selectOption(month);
     await this.yearSelect.selectOption(year.toString());
@@ -157,93 +148,76 @@ export class FormsPage extends BasePage {
   }
 
   async fillSubject(subject: string) {
-    console.log("Заполняем subject");
     await expect(this.subjectsFild).toBeEditable;
     await this.subjectsFild.fill(subject);
     //await this.page.click('body');
   }
 
   async sportsHobbyCheck() {
-    console.log("Выбираем хобби спорт");
     await this.sportCheckbox.check();
   }
 
   async uploadFile(filePath: string) {
-    console.log(`Загружаем файл: ${filePath}`);
     await this.uploadFileButton.setInputFiles(filePath);
   }
 
   async currentAddresslFill(currentAddress: string) {
-    console.log("Заполняем Current Address");
     await expect(this.currentAddress).toBeEditable;
     await this.currentAddress.fill(currentAddress);
   }
 
   async selectState(state: string) {
-    console.log("Выбираем страну");
     await this.stateSelector.click();
     await this.page.getByText(state).click();
   }
 
    async selectCity(city: string) {
-    console.log("Выбираем город");
     await this.citySelector.click();
     await this.page.getByText(city).click();
   }
 
     async clickSubmit() {
-    console.log("Нажимаем Submit");
     await this.submitButton.click();
   }
 
   async closeModal() {
-    console.log("Закрываем модальное окно");
     await this.closeButton.click();
     await expect(this.modalTable).toBeHidden();
   }
 
   async verifyOutputStudentName(expected: string) {
-  console.log(`Проверяем имя студента: ${expected}`);
   await expect(this.outputStudentName).toHaveText(expected);
 }
 
 async verifyOutputStudentEmail(expected: string) {
-  console.log(`Проверяем email: ${expected}`);
   await expect(this.outputStudentEmail).toHaveText(expected);
 }
 
 async verifyOutputGender(expected: string) {
-  console.log(`Проверяем пол: ${expected}`);
   await expect(this.outputGender).toHaveText(expected);
 }
 
 async verifyOutputMobile(expected: string) {
-  console.log(`Проверяем телефон: ${expected}`);
   await expect(this.outputMobile).toHaveText(expected);
 }
 
 async verifyOutputDateOfBirth(expected: string) {
-  console.log(`Проверяем дату рождения: ${expected}`);
   await expect(this.outputDateOfBirth).toHaveText(expected);
 }
 
 async verifyOutputSubjects(expected: string) {
-  console.log(`Проверяем предметы: ${expected}`);
   await expect(this.outputSubjects).toHaveText(expected);
 }
 
 async verifyOutputHobbies(expected: string) {
-  console.log(`Проверяем хобби: ${expected}`);
   await expect(this.outputHobbies).toHaveText(expected);
 }
 
 async verifyOutputAddress(expected: string) {
-  console.log(`Проверяем адрес: ${expected}`);
   await expect(this.outputAddress).toHaveText(expected);
 }
 
 async verifyOutputStateAndCity(expected: string) {
-  console.log(`Проверяем штат и город: ${expected}`);
   await expect(this.outputStateAndCity).toHaveText(expected);
 }
   async verifyAllOutputData(data: {
@@ -257,7 +231,6 @@ async verifyOutputStateAndCity(expected: string) {
   address?: string;
   stateAndCity: string;
 }) {
-  console.log('Проверяем все данные в таблице');
   await this.verifyOutputStudentName(data.studentName);
   await this.verifyOutputStudentEmail(data.studentEmail);
   await this.verifyOutputGender(data.gender);
@@ -269,5 +242,27 @@ async verifyOutputStateAndCity(expected: string) {
   if (data.address) await this.verifyOutputAddress(data.address);
   
   await this.verifyOutputStateAndCity(data.stateAndCity);
+}
+
+async checkEmailInpitHasError() {
+    console.log(
+      "Проверяем, что поле email невалидное",
+    );
+    await expect(this.emailFild).toHaveJSProperty('validity.valid', false);
+  }
+
+  async checkNumberInpitHasError() {
+    console.log(
+      "Проверяем, что при неверном формате number поле подсвечиваетя красным",
+    );
+    await expect(this.mobileNumberFild).toHaveJSProperty('validity.valid', false);
+  }
+
+async getCityList() {
+  await this.citySelector.click();
+  await this.page.waitForTimeout(200);
+  const cities = await this.page.locator('[role="option"]').allTextContents();
+  await this.page.click('body');
+  return cities;
 }
 }
