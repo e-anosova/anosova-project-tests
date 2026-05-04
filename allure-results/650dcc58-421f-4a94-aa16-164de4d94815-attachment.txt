@@ -1,6 +1,0 @@
-Идём на страницу Elements
-Проверяем, что URL содержит текст elements
-Идём на страницу Buttons
-Проверяем, что URL содержит текст buttons
-Нажимаем кнопку Double Click Me
-Проверяем Double click message

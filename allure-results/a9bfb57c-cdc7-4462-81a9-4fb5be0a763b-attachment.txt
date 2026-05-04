@@ -1,6 +1,0 @@
-Идём на страницу Forms
-Проверяем, что URL содержит текст forms
-Идём в раздел Practice Form
-Элемент Practice Form видим: true
-Проверяем, что URL содержит текст automation-practice-form
-Выбираем страну
