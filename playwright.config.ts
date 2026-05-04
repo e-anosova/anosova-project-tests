@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as os from 'os';
 
 /**
  * Read environment variables from file.
@@ -22,8 +23,19 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
    workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  reporter: [
+    ['list'],  // вывод в консоль (можно оставить или убрать)
+    ['allure-playwright', {
+      resultsDir: 'allure-results',
+      detail: true,
+      environmentInfo: {
+        os_platform: os.platform(),
+        os_release: os.release(),
+        node_version: process.version,
+      },
+    }],
+  ],
+
   use: {
     viewport: null,
     launchOptions: {

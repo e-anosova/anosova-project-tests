@@ -1,0 +1,12 @@
+Идём на страницу Forms
+Проверяем, что URL содержит текст forms
+Идём в раздел Practice Form
+Элемент Practice Form видим: true
+Проверяем, что URL содержит текст automation-practice-form
+Заполняем First Name
+Заполняем Second Name
+Заполняем email
+Выбираем мужской гендер
+Заполняем номер телефона
+Нажимаем Submit
+Проверяем, что поле email невалидное

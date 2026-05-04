@@ -1,0 +1,25 @@
+Идём на страницу Forms
+Проверяем, что URL содержит текст forms
+Идём в раздел Practice Form
+Элемент Practice Form видим: true
+Проверяем, что URL содержит текст automation-practice-form
+Заполняем First Name
+Заполняем Second Name
+Заполняем email
+Выбираем женский гендер
+Заполняем номер телефона
+Выбираем дату: 1 January 2000
+Заполняем subject
+Выбираем хобби спорт
+Загружаем файл: test-data/example.jpg
+Заполняем Current Address
+Выбираем страну
+Выбираем город
+Нажимаем Submit
+Проверяем все данные в таблице
+Проверяем имя студента: Caesar Hagenes
+Проверяем email: Kari.Ondricka16@yahoo.com
+Проверяем пол: Female
+Проверяем телефон: 8267103598
+Проверяем дату рождения: 01 January,2000
+Проверяем предметы: demulceo

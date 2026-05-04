@@ -1,0 +1,15 @@
+Идём на страницу Elements
+Проверяем, что URL содержит текст elements
+Идём в раздел Text Box
+Элемент Text Box видим: true
+Проверяем, что URL содержит текст text-box
+Заполняем Full Name
+Заполняем email
+Заполняем Current Address
+Заполняем Permanent Address
+Нажимаем Submit
+Проверяем, что данные отображаются в output
+Проверяем, что output name соответсвует input name
+Проверяем, что выведеннsq output email соответсвует input email
+Проверяем, что выведеннsq output email соответсвует input email
+Проверяем, что выведеннsq output email соответсвует input email
