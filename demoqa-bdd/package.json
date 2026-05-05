@@ -1,0 +1,19 @@
+{
+  "name": "codecept-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx codeceptjs run",
+    "test:headed": "npx codeceptjs run --steps --verbose",
+    "test:debug": "npx codeceptjs run --debug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "codeceptjs": "^3.7.9",
+    "playwright": "^1.59.1",
+    "ts-node": "^10.9.2"
+  }
+}
